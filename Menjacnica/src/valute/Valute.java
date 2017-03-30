@@ -46,6 +46,41 @@ public class Valute {
 		this.srednjiKurs = srednjiKurs;
 	}
 	
+	@Override
+	public String toString() {
+		return "Valuta: "+getNazivValute()+" na dan: "+getDatum()+" ima prodajni kurs: "+getProdajniKurs()+
+				", kupovni kurs: "+getKupovniKurs()+" i srednji kurs: "+getSrednjiKurs();
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((datum == null) ? 0 : datum.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(kupovniKurs);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((nazivValute == null) ? 0 : nazivValute.hashCode());
+		temp = Double.doubleToLongBits(prodajniKurs);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((skraceniNaziv == null) ? 0 : skraceniNaziv.hashCode());
+		temp = Double.doubleToLongBits(srednjiKurs);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Valute v=(Valute)(o);
+		
+		if(v.getNazivValute().equals(nazivValute) && v.getDatum().equals(datum))
+			return true;
+		
+		return false;
+		
+	}
+	
+	
+	
 	
 
 }
